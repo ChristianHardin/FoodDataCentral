@@ -1,0 +1,38 @@
+meta {
+  name: POST Foods List
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{BASE_URL}}/v1/foods/list
+  body: json
+  auth: inherit
+}
+
+headers {
+  accept: application/json
+}
+
+body:json {
+  {
+    "dataType": [
+      "Foundation",
+      "SR Legacy"
+    ],
+    "pageSize": 25,
+    "pageNumber": 2,
+    "sortBy": "dataType.keyword",
+    "sortOrder": "asc"
+  }
+}
+
+docs {
+  | param | desc | example |
+  | --- | --- | --- |
+  | dataType | Optional. Filter on a specific data type; specify one or more values in an array. | [Banded, Foundation, FNDDS, Legacy] | 
+  | pageSize | Optional. Maximum number of results to return for the current page. Default is 50. | 1 - 200 |
+  | pageNumber | Optional. Page number to retrieve. The offset into the overall result set is expressed as (pageNumber * pageSize) | 25 |
+  | sortBy | Optional. Specify one of the possible values to sort by that field. Note, dataType.keyword will be dataType and lowercaseDescription.keyword will be description in future releases. | fdcId | 
+  | sortOrder | Optional. The sort direction for the results. Only applicable if sortBy is specified. | [asc, desc] |
+}

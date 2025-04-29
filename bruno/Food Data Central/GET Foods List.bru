@@ -1,0 +1,33 @@
+meta {
+  name: GET Foods List
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{BASE_URL}}/v1/foods/list?dataType=FNDDS&pageSize=25&pageNumber=25
+  body: none
+  auth: inherit
+}
+
+params:query {
+  dataType: FNDDS
+  pageSize: 25
+  pageNumber: 25
+  ~sortBy: fdcId
+  ~sortOrder: asc
+}
+
+headers {
+  accept: application/json
+}
+
+docs {
+  | param | desc | example |
+  | --- | --- | --- |
+  | dataType | Optional. Filter on a specific data type; specify one or more values in an array. | [Banded, Foundation, FNDDS, Legacy] | 
+  | pageSize | Optional. Maximum number of results to return for the current page. Default is 50. | 1 - 200 |
+  | pageNumber | Optional. Page number to retrieve. The offset into the overall result set is expressed as (pageNumber * pageSize) | 25 |
+  | sortBy | Optional. Specify one of the possible values to sort by that field. Note, dataType.keyword will be dataType and lowercaseDescription.keyword will be description in future releases. | fdcId | 
+  | sortOrder | Optional. The sort direction for the results. Only applicable if sortBy is specified. | [asc, desc] |
+}

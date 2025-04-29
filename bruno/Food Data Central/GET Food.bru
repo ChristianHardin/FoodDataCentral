@@ -1,0 +1,32 @@
+meta {
+  name: GET Food
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{BASE_URL}}/v1/food/{{fdcId}}?format=abridged&nutrients=717,718
+  body: none
+  auth: inherit
+}
+
+params:query {
+  format: abridged
+  nutrients: 717,718
+}
+
+headers {
+  accept: application/json
+}
+
+vars:pre-request {
+  fdcId: 2262074
+}
+
+docs {
+  | Param | Description | Example |
+  | --- | --- | --- |
+  | fdcId | FDC id of the food to retrieve | 2708686 |
+  | format | Optional. 'abridged' for an abridged set of elements, 'full' for all elements (default). | format=full | 
+  | nutrients | Optional. List of up to 25 nutrient numbers. Only the nutrient information for the specified nutrients will be returned. Should be comma separated list (e.g. nutrients=203,204) or repeating parameters (e.g. nutrients=203&nutrients=204). If a food does not have any matching nutrients, the food will be returned with an empty foodNutrients element. | nutrients=717,718 | 
+}

@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Food Data Central",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

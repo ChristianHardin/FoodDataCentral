@@ -1,0 +1,9 @@
+services:
+  devcontainer:
+    image: ubuntu:20.04
+    container_name: ubuntu-dev
+    tty: true
+    ports:
+      - "2222:22"  # Map host port 2222 to container port 22 for SSH access
+    volumes:
+      - ./:/app

@@ -1,0 +1,12 @@
+auth {
+  mode: apikey
+}
+
+auth:apikey {
+  key: api_key
+  value: {{API_KEY}}
+  placement: queryparams
+}
+vars:pre-request {
+  BASE_URL: https://api.nal.usda.gov/fdc
+}
